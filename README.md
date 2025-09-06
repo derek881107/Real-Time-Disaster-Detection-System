@@ -1,10 +1,15 @@
 # Real-Time Disaster Detection System with Regional Risk Scoring
+===============================================================================
+
 This system is designed to detect risk indices across different regions of the global supply chain. By entering supplier addresses in the specified format, it can generate specific risk scores for you.
 
 
 
 
+
 # Real-Time Disaster Detection and Risk Assessment System
+===============================================================================
+
 
 This project integrates the **GDACS platform** with the **Google News API** to provide real-time disaster detection, automated news collection, and risk scoring. By combining official alerts with media coverage, the system helps organizations evaluate disaster severity, assess local response capabilities, and generate risk scores for supply chain resilience.  
 
@@ -21,15 +26,49 @@ This project integrates the **GDACS platform** with the **Google News API** to p
 ---
 
 ## 🔎 System Components
+===============================================================================
+
 
 ### 1. Real-Time Disaster Detection System
+--------
 
 - File: **real_time_disaster_detection.ipynb**
 - Connects to GDACS and detects disasters with **Orange-level or higher alerts**.  
 - Sends notifications with disaster details and response instructions via **email**.  
-- Helps global HQ and supply chain teams monitor risks in real time.  
+- Helps global HQ and supply chain teams monitor risks in real time.
+
+What this program does
+----------------------
+This program monitors global disasters through GDACS (and USGS as backup)
+and analyzes which suppliers could be affected. It:
+
+1. Loads a supplier list from a CSV file.
+2. Uses the Google Maps API to geocode supplier addresses.
+3. Fetches disaster alerts from GDACS within a user-defined time window.
+4. Falls back to USGS earthquake data when needed.
+5. Calculates distances between disasters and supplier locations.
+6. Classifies supplier impact levels (Critical / High / Medium / Low).
+7. Sends a summary email via Gmail and saves a full JSON report.
+
+Why it’s important
+------------------
+• Provides supply chain teams with a quick email alert about which suppliers
+  may be affected.  
+• Creates a detailed JSON report for dashboards, audits, or deeper analysis.  
+• Works end-to-end with just a supplier CSV, a Google Maps API key, and a
+  Gmail App Password.
+
+Key features
+------------
+• Parses GDACS alerts with complete metadata (type, severity, coordinates, etc.).  
+• Multiple coordinate extraction methods with regex fallbacks.  
+• USGS backup feed for earthquake events.  
+• Haversine distance-based impact scoring.  
+• Email summaries with grouped supplier impacts.  
+• JSON reports with metadata, statistics, alerts, and supplier details.
 
 ### 2. Historical Disaster Data Collection
+--------
 
 - File: **historical_dataset_processing.ipynb**
 - Loads **historical GDACS disaster records** for specific regions.  
@@ -37,9 +76,31 @@ This project integrates the **GDACS platform** with the **Google News API** to p
 - Enables:  
   1. Seasonal disaster pattern analysis.  
   2. High-risk vs. low-risk region identification.  
-  3. Predictive modeling for monthly disaster risks.  
+  3. Predictive modeling for monthly disaster risks.
+
+Overview
+--------
+
+This script builds a precise, geometry-aware pipeline to detect which client
+locations may be affected by historical disaster events reported by GDACS.
+Instead of relying on coarse bounding boxes, it fetches and unifies per-episode
+polygons from the GDACS API, buffers them if requested, and computes the exact
+shortest distance from each client point to each disaster geometry. Results are
+exported to both JSON (summary + matches) and a multi-sheet Excel workbook for
+analysis and reporting.
+
+--------
+
+Typical Use Cases
+-----------------
+- Quantify which client sites fell within X km of historical disasters.
+- Produce decision-ready spreadsheets and JSON summaries for risk reviews.
+- Merge multiple GDACS GeoJSON files and de-duplicate events by ID.
+- Convert merged GeoJSON to a flat CSV for quick inspection.
+
 
 ### 3. Risk Scoring with News Integration
+--------
 
 - File: **google_news_scraper.ipynb**
 - Collects **Google News articles** related to disasters in specific regions and timeframes.  
