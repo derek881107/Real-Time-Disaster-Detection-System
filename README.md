@@ -3,7 +3,7 @@
 This system is designed to detect risk indices across different regions of the global supply chain. By entering supplier addresses in the specified format, it can generate specific risk scores for you.
 
 
-
+---
 
 
 # Real-Time Disaster Detection and Risk Assessment System
@@ -21,13 +21,14 @@ This project integrates the **GDACS platform** with the **Google News API** to p
 - **Risk Scoring**: Combine Google News data with GPT-3.5 Turbo for risk evaluation.  
 - **Data Export**: Output results in Excel for easy integration with Power BI.  
 
+---
 
 ## 🔎 System Components
 
 
 
 ## 1. Real-Time Disaster Detection System
---------
+
 
 - File: **real_time_disaster_detection.ipynb**
 - Connects to GDACS and detects disasters with **Orange-level or higher alerts**.  
@@ -65,7 +66,6 @@ Key features
 • JSON reports with metadata, statistics, alerts, and supplier details.
 
 ## 2. Historical Disaster Data Collection
---------
 
 - File: **historical_dataset_processing.ipynb**
 - Loads **historical GDACS disaster records** for specific regions.  
@@ -96,14 +96,13 @@ Typical Use Cases
 
 
 ## 3. Risk Scoring with News Integration
---------
 
 - File: **google_news_scraper.ipynb**
 - Collects **Google News articles** related to disasters in specific regions and timeframes.  
 - Analyzes content with **GPT-3.5 Turbo** to assign **risk scores**.  
 - Exports enriched results to **Excel** for visualization in Power BI.
 
-OVERVIEW
+Overview
 --------
 This program automates end-to-end media analysis for GDACS disaster events and
 produces a fully structured Excel report. Given a GDACS event list and nearby
@@ -120,7 +119,7 @@ client facilities, it:
 7) Aggregates results, computes per-event summaries, and exports a multi-sheet
    Excel workbook with results, summary statistics, and client risk details.
 
-KEY CAPABILITIES
+Key Capabilities
 ----------------
 • Localization
   - CountryLanguageAnalyzer chooses {lang, country} codes for Google News
