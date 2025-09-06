@@ -28,7 +28,7 @@ This project integrates the **GDACS platform** with the **Google News API** to p
 
 
 
-### 1. Real-Time Disaster Detection System
+## 1. Real-Time Disaster Detection System
 --------
 
 - File: **real_time_disaster_detection.ipynb**
@@ -37,7 +37,7 @@ This project integrates the **GDACS platform** with the **Google News API** to p
 - Helps global HQ and supply chain teams monitor risks in real time.
 
 What this program does
-----------------------
+------------------
 This program monitors global disasters through GDACS (and USGS as backup)
 and analyzes which suppliers could be affected. It:
 
@@ -66,7 +66,7 @@ Key features
 • Email summaries with grouped supplier impacts.  
 • JSON reports with metadata, statistics, alerts, and supplier details.
 
-### 2. Historical Disaster Data Collection
+## 2. Historical Disaster Data Collection
 --------
 
 - File: **historical_dataset_processing.ipynb**
@@ -98,14 +98,13 @@ Typical Use Cases
 - Convert merged GeoJSON to a flat CSV for quick inspection.
 
 
-### 3. Risk Scoring with News Integration
+## 3. Risk Scoring with News Integration
 --------
 
 - File: **google_news_scraper.ipynb**
 - Collects **Google News articles** related to disasters in specific regions and timeframes.  
 - Analyzes content with **GPT-3.5 Turbo** to assign **risk scores**.  
 - Exports enriched results to **Excel** for visualization in Power BI.
-
 
 OVERVIEW
 --------
