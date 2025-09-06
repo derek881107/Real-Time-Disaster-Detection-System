@@ -1,5 +1,4 @@
 # Real-Time Disaster Detection System with Regional Risk Scoring
-===============================================================================
 
 This system is designed to detect risk indices across different regions of the global supply chain. By entering supplier addresses in the specified format, it can generate specific risk scores for you.
 
@@ -8,7 +7,7 @@ This system is designed to detect risk indices across different regions of the g
 
 
 # Real-Time Disaster Detection and Risk Assessment System
-===============================================================================
+
 
 
 This project integrates the **GDACS platform** with the **Google News API** to provide real-time disaster detection, automated news collection, and risk scoring. By combining official alerts with media coverage, the system helps organizations evaluate disaster severity, assess local response capabilities, and generate risk scores for supply chain resilience.  
@@ -26,7 +25,7 @@ This project integrates the **GDACS platform** with the **Google News API** to p
 ---
 
 ## 🔎 System Components
-===============================================================================
+
 
 
 ### 1. Real-Time Disaster Detection System
