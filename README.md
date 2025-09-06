@@ -10,7 +10,7 @@ This system is designed to detect risk indices across different regions of the g
 
 
 
-This project integrates the **GDACS platform** with the **Google News API** to provide real-time disaster detection, automated news collection, and risk scoring. By combining official alerts with media coverage, the system helps organizations evaluate disaster severity, assess local response capabilities, and generate risk scores for supply chain resilience.  
+This project integrates the **[GDACS Official Site](https://www.gdacs.org)** and **[Google News API](https://github.com/kotartemiy/pygooglenews)** to provide real-time disaster detection, automated news collection, and risk scoring. By combining official alerts with media coverage, the system helps organizations evaluate disaster severity, assess local response capabilities, and generate risk scores for supply chain resilience.  
 
 
 ## 📌 Features
