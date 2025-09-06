@@ -28,6 +28,8 @@ This project integrates the **GDACS platform** with the **Google News API** to p
 - Helps global HQ and supply chain teams monitor risks in real time.  
 
 ### 2. Historical Disaster Data Collection
+
+- File: google_news_scraper.ipynb
 - Loads **historical GDACS disaster records** for specific regions.  
 - Matches with company **client and warehouse coordinates** to create training datasets.  
 - Enables:  
@@ -36,6 +38,8 @@ This project integrates the **GDACS platform** with the **Google News API** to p
   3. Predictive modeling for monthly disaster risks.  
 
 ### 3. Risk Scoring with News Integration
+
+- File: **google_news_scraper.ipynb**
 - Collects **Google News articles** related to disasters in specific regions and timeframes.  
 - Analyzes content with **GPT-3.5 Turbo** to assign **risk scores**.  
 - Exports enriched results to **Excel** for visualization in Power BI.  
