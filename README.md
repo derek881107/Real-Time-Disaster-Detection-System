@@ -44,7 +44,68 @@ This project integrates the **GDACS platform** with the **Google News API** to p
 - File: **google_news_scraper.ipynb**
 - Collects **Google News articles** related to disasters in specific regions and timeframes.  
 - Analyzes content with **GPT-3.5 Turbo** to assign **risk scores**.  
-- Exports enriched results to **Excel** for visualization in Power BI.  
+- Exports enriched results to **Excel** for visualization in Power BI.
+
+
+OVERVIEW
+--------
+This program automates end-to-end media analysis for GDACS disaster events and
+produces a fully structured Excel report. Given a GDACS event list and nearby
+client facilities, it:
+
+1) Detects the appropriate Google News language/country for each client location.
+2) Builds localized disaster search terms (translated/adapted with GPT).
+3) Queries Google News (via PyGoogleNews) within the event’s date range.
+4) Fetches article HTML and extracts comprehensive article content using GPT.
+5) Analyzes each article in the context of the GDACS event and scores it on six
+   dimensions, plus an overall “final_risk_score”.
+6) Derives per-client address risk scores (0–10) based on proximity/severity
+   context and mentions in the media.
+7) Aggregates results, computes per-event summaries, and exports a multi-sheet
+   Excel workbook with results, summary statistics, and client risk details.
+
+KEY CAPABILITIES
+----------------
+• Localization
+  - CountryLanguageAnalyzer chooses {lang, country} codes for Google News
+    based on client country/address (uses a small default map + GPT).
+  - LocalizedPyGoogleNewsClient runs searches with date filtering and applies
+    basic deduping/cleanup.
+  - Optional GPT-driven term localization translates/adapts disaster terms to
+    local usage (e.g., typhoon vs. hurricane, country/region names).
+
+• Article Content Extraction
+  - GPTURLAnalyzer downloads the article HTML with requests and asks GPT to
+    extract comprehensive text + a 13–15 sentence summary + “key_details_found”.
+  - Ensures a consistent JSON payload is returned and validates success flags.
+
+• Disaster-Context Analysis
+  - EnhancedDisasterAnalyzer builds a GDACS-aware prompt per article using a
+    GDACS knowledge base (per disaster type) and alert level definitions.
+  - GPT outputs:
+      - disaster_severity_score (0–100)
+      - response_capability_score (0–100)
+      - response_timeliness_score (0–100)
+      - disaster_relevance_score (0–100)
+      - gdacs_alignment_score (0–100)
+      - media_coverage_score (0–100)
+      - is_disaster_related (bool)
+      - primary_disaster_type (string)
+      - disaster/response/timeliness keywords (lists)
+      - analysis summaries (plain text)
+      - final_risk_score (0–100)
+      - confidence_score (0–100)
+  - Client Country Match: checks if article content mentions any client
+    countries/addresses associated with the same Event_ID.
+
+• Client Address Risk (0–10)
+  - For the current event, collects client entries (address, country,
+    severity_text, distance summary) and asks GPT to assign a risk score per
+    *address*. These appear in the export under:
+      - client_risk_scores_json (JSON)
+      - risk_<shortened_address> columns (one per matched address)
+      - client_risk_scores_summary (readable summary)
+
 
 ---
 
