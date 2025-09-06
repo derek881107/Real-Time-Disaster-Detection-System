@@ -23,13 +23,15 @@ This project integrates the **GDACS platform** with the **Google News API** to p
 ## 🔎 System Components
 
 ### 1. Real-Time Disaster Detection System
+
+- File: **historical_dataset_processing.ipynb**
 - Connects to GDACS and detects disasters with **Orange-level or higher alerts**.  
 - Sends notifications with disaster details and response instructions via **email**.  
 - Helps global HQ and supply chain teams monitor risks in real time.  
 
 ### 2. Historical Disaster Data Collection
 
-- File: google_news_scraper.ipynb
+- File: **historical_dataset_processing.ipynb**
 - Loads **historical GDACS disaster records** for specific regions.  
 - Matches with company **client and warehouse coordinates** to create training datasets.  
 - Enables:  
